@@ -22,6 +22,7 @@ def readPixels(jpg):
     print(binMsg)
 
 #   Go through every pixel
+    #TODO: Eventuelle spaces bliver nok ødelagt af det her. Skal lave space hver 8. gang når programmet decrypter.
     for y in range(0,len(binMsg) // w + 1):
         for x in range(0,w * (len(binMsg) // w) + len(binMsg) % w):
             #get the RGB color of the pixel
