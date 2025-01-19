@@ -9,7 +9,7 @@ picture = "Images/LuigiConvert.jpg"
 
 
 
-def readPixels(jpg):
+def encryptImage(jpg):
     index = 0
     binMsg = ' '.join(format(ord(char), '08b') for char in msg)
     cleanImg=Image.open(jpg)
@@ -23,33 +23,43 @@ def readPixels(jpg):
 
 #   Go through a pixel for every character in binMsg
     for y in range(0,len(binMsg) // w + 1):
-        for x in range(0,w * (len(binMsg) // w) + len(binMsg) % w):
-            tint = 0
+        x = 0
+        while x < w and index < len(binMsg):
+        #for x in range(0,w * (len(binMsg) // w) + len(binMsg) % w):
+            rTint, gTint, bTint = 0,0,0
             #get the RGB color of the pixel
             [r,g,b]=img[x,y]
 
+            #Lavet tydeligt så man kan se hvad der foregår med pixelsne
             if binMsg[index] == " ":
-                tint = 0
+                rTint = -255
+                gTint = -255
+                bTint = -255
             if binMsg[index] == "0":
-                tint = -1
+                rTint = -255
+                gTint = 255
+                bTint = -255
             if binMsg[index] == "1":
-                tint = -2
-
-            r, g, b= r + tint, g + tint, b + tint
-            #g = g + tint
-            #b = b + tint
+                rTint = -255
+                gTint = -255
+                bTint = 255
+            r = r + rTint
+            g = g + gTint
+            b = b + bTint
 
             value = (r, g, b)
 
             cleanImg.putpixel((x, y), value)
 
             index += 1
+            x += 1
     print(index)
     print(len(binMsg))
     cleanImg.save("Images/Luigi2.jpg")
     cleanImg.show
+    print("Done")
 
 
 
 
-readPixels(picture)
+encryptImage(picture)
