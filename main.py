@@ -1,11 +1,10 @@
 ##https://stackoverflow.com/questions/49280402/python-change-the-rgb-values-of-the-image-and-save-as-a-image
 
 from PIL import *
+from PIL import Image
 
 msg = "Hello world"
 picture = "Images/LuigiConvert.jpg"
-
-
 
 
 
@@ -16,7 +15,7 @@ def encryptImage(jpg):
     img=cleanImg.load()
     print(cleanImg.size)
     [w,h]=cleanImg.size  #width*height
-    pictureLen = w * h * 3  # /8????? Vent nvm. Tænkte at vi sammenlignede den ikke binære med billedet. /8 er unødvendig
+    pictureLen = w * h * 3
     if len(binMsg) > pictureLen:
         raise ValueError("Message is too large for image. Please use a larger image or shorter message")
     print(binMsg)
@@ -55,7 +54,7 @@ def encryptImage(jpg):
             x += 1
     print(index)
     print(len(binMsg))
-    cleanImg.save("Images/Luigi2.jpg")
+    cleanImg.save("Images/Luigi2.jpg", quality=100, subsampling=0)
     cleanImg.show
     print("Done")
 
