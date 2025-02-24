@@ -22,17 +22,17 @@ def decimg(clean_image_path, dirty_image_path):
             r2, g2, b2 = img2[x,y]
 
 
-            if r1 == r2-1 and g1 == g2-1 and b1 == b2-1:
+            if r1 == r2-3 and g1 == g2-3 and b1 == b2-3:
                 binary_message += " "
 
-            if r1 == r2 and g1 == g2-1 and b1 == b2:
+            if r1 == r2 and g1 == g2-3 and b1 == b2:
                 binary_message += "0"
 
-            if r1 == r2 and g1 == g2 and b1 == b2-1:
+            if r1 == r2 and g1 == g2 and b1 == b2-3:
                 binary_message += "1"
 
-            else:
-                break
+            #else:
+                #break
     print(binary_message)
 
 
