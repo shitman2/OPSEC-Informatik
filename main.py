@@ -32,17 +32,17 @@ def encryptImage(jpg):
 
             #Lavet tydeligt så man kan se hvad der foregår med pixelsne
             if binMsg[index] == " ":
-                rTint = -255
-                gTint = -255
-                bTint = -255
+                rTint = -1
+                gTint = -1
+                bTint = -1
             if binMsg[index] == "0":
-                rTint = -255
-                gTint = 255
-                bTint = -255
+                rTint = 0
+                gTint = -1
+                bTint = 0
             if binMsg[index] == "1":
-                rTint = -255
-                gTint = -255
-                bTint = 255
+                rTint = 0
+                gTint = 0
+                bTint = -1
             r = r + rTint
             g = g + gTint
             b = b + bTint

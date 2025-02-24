@@ -5,25 +5,35 @@ def bintotxt(binary_message):
     text = ''.join(chr(int(char, 2)) for char in chars if char)
     return text
 
-def decimg(image_path):
-    cleanImg = Image.open(image_path)
-    img = cleanImg.load()
+def decimg(clean_image_path, dirty_image_path):
+    cleanImg = Image.open(clean_image_path)
+    img1 = cleanImg.load()
     [w, h] = cleanImg.size
+
+    dirtyImg = Image.open(dirty_image_path)
+    img2 = dirtyImg.load()
+
 
     binary_message = ""
 
     for y in range(h):
         for x in range(w):
-            r, g, b = img(x,y)
+            r1, g1, b1 = img1[x,y]
+            r2, g2, b2 = img2[x,y]
 
-            if r == 0 and g == 0 and b == 0:
+
+            if r1 == r2-1 and g1 == g2-1 and b1 == b2-1:
+                binary_message += " "
+
+            if r1 == r2 and g1 == g2-1 and b1 == b2:
+                binary_message += "0"
+
+            if r1 == r2 and g1 == g2 and b1 == b2-1:
+                binary_message += "1"
+
+            else:
                 break
+    print(binary_message)
 
-                if r == 0 and g == 0 and b == 255:
-                    binary_message += "1"
-                elif r == 0 and g == 255 and b == 0:
-                    binary_message += "0"
-                elif r == 255 and g == 0 and b == 0:
-                    binary_message += " "
 
-                    
+decimg("Images/LuigiConvert.jpg", "Images/Luigi2.jpg")
