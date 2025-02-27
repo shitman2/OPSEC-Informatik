@@ -13,26 +13,29 @@ def decimg(clean_image_path, dirty_image_path):
     dirtyImg = Image.open(dirty_image_path)
     img2 = dirtyImg.load()
 
-
+    tempBinMsg = ""
     binary_message = ""
 
     for y in range(h):
         for x in range(w):
+
             r1, g1, b1 = img1[x,y]
             r2, g2, b2 = img2[x,y]
 
+    ½½
+            if (r1 == r2-5 or r1 == r2-4 or r1 == r2-6) and (g1 == g2-5 or g1 == g2-4 or g1 == g2-6) and (b1 == b2-5 or b1 == b2-4 or b1 == b2-6):
+                tempBinMsg = "".join([binary_message, " "])
 
-            if r1 == r2-3 and g1 == g2-3 and b1 == b2-3:
-                binary_message += " "
+            if (r1 == r2 or r1 == r2+1 or r1 == r2-1) and (g1 == g2-5 or g1 == g2-4 or g1 == g2-6) and (b1 == b2 or b1 == b2+1 or b1 == b2-1):
+                tempBinMsg = "".join([binary_message, "0"])
 
-            if r1 == r2 and g1 == g2-3 and b1 == b2:
-                binary_message += "0"
-
-            if r1 == r2 and g1 == g2 and b1 == b2-3:
-                binary_message += "1"
+            if (r1 == r2 or r1 == r2+1 or r1 == r2-1) and (g1 == g2 or g1 == g2+1 or g1 == g2-1) and (b1 == b2-5 or b1 == b2-4 or b1 == b2-6):
+                tempBinMsg = "".join([binary_message, "1"])
 
             #else:
                 #break
+
+            binary_message = tempBinMsg
     print(binary_message)
 
 
