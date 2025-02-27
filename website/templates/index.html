@@ -3,15 +3,17 @@
     <head>
         <title>Message to Image Steganography</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="js/script.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
     </head>
     <body style="font-family: 'Source Sans Pro', sans-serif;">
         <header>
             <div class="topnav">
                 <a href="index.html" style="margin: -17px; margin-right: 0px;">
-                    <img src="images/logo-placeholder-image.png" alt="logo" style="vertical-align: middle;"> Encrypt Message
+                    <img src="{{ url_for('static', filename='images/encodify_logo_v3_7.png') }}" alt="logo" style="vertical-align: middle; scale: 200%; padding-left: 40px; padding-right: 35px;"> Encrypt Message
                 </a>
                 <a href="decrypt-message.html">Decrypt Message</a>
             </div>  
@@ -19,10 +21,12 @@
 
         <main>
             <h3>Message to Image Steganography</h3>
-            <!--<img src="images/LuigiConvert.jpg" alt="placeholder image" >-->
+            <form method="post" action="/home" enctype="multipart/form-data">
+                <input type="file" name="Upload" id="Upload">
+                <label for="Upload"><i class="fa-solid fa-upload"></i>Upload</label>
 
-            <input type="file" name="Upload" id="Upload">
-            <label for="Upload"><i class="fa-solid fa-upload"></i>Upload</label>
+            </form>
+
             <input type="Download" id="Download">
             <label for="Download"><i class="fa-solid fa-download"></i>Download</label>
             <h2>Add your message below</h2>
@@ -34,7 +38,7 @@
                 <img src="" alt="Image Preview" class="image-preview__image">
                 <span class="image-preview__default-text">Image Preview</span>
             </div>
-                <script src="js/image-view.js"></script>
+            <script src="{{ url_for('static', filename='js/imageView.js') }}"></script>
         </main>
     </body>
 </html>

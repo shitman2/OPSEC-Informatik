@@ -1,10 +1,54 @@
+import json
+from flask import Flask, render_template, request, redirect, url_for
+import os
+
+app = Flask(__name__)
+
+# Function for where the data for the image will be saved
+app.config['IMAGE_UPLOAD'] = '/website/images'
+
+from werkzeug.utils import secure_filename
+
+@app.route("/home", methods=['POST', 'GET'])
+def upload_image():
+    if request.method == 'POST':
+        print(request.files)
+        image = request.files['file'] # Access image (keyword 'file') using files method
+        if image.filename == '':
+            print("File name is invalid")
+            return redirect(request.url)
+
+        # Use werkzeug.utils for secure filename
+        filename = secure_filename(image.filename)
+
+        # To access directory of folder to upload file
+        basedir = os.path.abspath(os.path.dirname(__file__))
+
+        # Save image in the directory
+        image.save(os.path.join(basedir, app.config['IMAGE_UPLOAD'], filename))
+
+        return render_template("index.html", filename=filename)
+
+    return render_template("index.html")
+
+@app.route("/display/<filename>")
+def display_image(filename):
+    return redirect(url_for('images', filename='/website/images/' + filename), code=301)
+
+app.run(port=5000)
+
 ##https://stackoverflow.com/questions/49280402/python-change-the-rgb-values-of-the-image-and-save-as-a-image
 
 from PIL import *
 from PIL import Image
+from image-view.js import file
 
 msg = "Hello world"
-picture = "Images/Luigi2.jpg"
+if file == "":
+    print("File name is invalid")
+else:
+    picture = "/website/images/"+file
+
 
 def encryptImage(jpg):
     index = 0
