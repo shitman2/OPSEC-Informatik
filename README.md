@@ -7,4 +7,4 @@ Trello: https://trello.com/invite/b/678a3fedcdb6ef8017077dc7/ATTI57a98f9eb3035a1
 
 Miro: https://miro.com/welcomeonboard/dFNvdTlYM1FpWXFCODdXZzJ2UlJIUmJpaE9ZL3kzMHdFTGdXS1VlbmovcXVRWFFsMUtRTWtzMEwzcDUrRnFpdTlLakh4Yy9xM0szMWFGSHNxWFhjdVFadHZFd3hkMGtMVWJ4UkVIUHc5UUl2cThHV3AvNjVoTnpEYytHcldXTkQhZQ==?share_link_id=598160310999
 
-https://github.com/shitman2/SIGINT-Informatik/blob/Images/jstopy.webp?raw=true
+https://github.com/shitman2/SIGINT-Informatik/blob/main/Images/jstopy.webp?raw=true
