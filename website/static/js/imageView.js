@@ -27,42 +27,21 @@ Upload.addEventListener("change", function() {
         const dict_values = { "image": file };  // Proper object format
         console.log("Sending JSON:", JSON.stringify(dict_values));  // Debugging log
 
+        $.ajax({
+            url: "/test",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(dict_values),
+            dataType: "json",
+            success: function(response) {
+                console.log("Image sent successfully:", response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", xhr.responseText);
+            }
+        });
 
-            fetch("http://localhost:8000/receive_message"),{
-                method: "POST",
-                headers:{
-                    "Content-Type": "application/json",
-                },
-            body: JSON.stringify({dict_values: dict_values}),
-        }
-                .then(response => {
-                    if(!response.ok) {
-                        throw new Error("response was not ok");
-                    }
-                    return response.json()
-                })
-                .then(data =>{
-                    console.log("data from server: ", data)
-                })
-                .catch(error=>{
-                    console.log("something went wrong with the response", error);
-                });
-
-        //$.ajax({
-            //url: "/test",
-            //type: "POST",
-            //contentType: "application/json",
-            //data: JSON.stringify(dict_values),
-            //dataType: "json",
-            //success: function(response) {
-                //console.log("Image sent successfully:", response);
-            //},
-            //error: function(xhr, status, error) {
-                //console.error("Error:", xhr.responseText);
     }
-        //});
-
-    //}
     // if no file is selected, go back to css default
     else {
         previewDefaultText.style.display = "null";
