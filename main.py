@@ -4,7 +4,7 @@ from PIL import *
 from PIL import Image
 
 msg = "Hello world"
-picture = "Images/LuigiConvert.jpg"
+picture = "Images/LuigiConvert2.jpg"
 
 
 
@@ -32,17 +32,32 @@ def encryptImage(jpg):
 
             #Lavet tydeligt så man kan se hvad der foregår med pixelsne
             if binMsg[index] == " ":
-                rTint = -5
-                gTint = -5
-                bTint = -5
+                '''
+                rTint = -255
+                gTint = -255
+                bTint = -255
+                '''
+                r = 0
+                g = 0
+                b = 0
             if binMsg[index] == "0":
-                rTint = 0
-                gTint = -5
-                bTint = 0
+                '''
+                rTint = 255
+                gTint = -255
+                bTint = 255
+                '''
+                r = 255
+                g = 0
+                b = 255
             if binMsg[index] == "1":
-                rTint = 0
-                gTint = 0
-                bTint = -5
+                '''
+                rTint = 255
+                gTint = 255
+                bTint = -255
+                '''
+                r = 255
+                g = 255
+                b = 0
             r = r + rTint
             g = g + gTint
             b = b + bTint
@@ -55,7 +70,7 @@ def encryptImage(jpg):
             x += 1
     print(index)
     print(len(binMsg))
-    cleanImg.save("Images/Luigi2.jpg", quality=100, subsampling=0)
+    cleanImg.save("Images/Luigi3.jpg",quality=100, subsampling=0)
     cleanImg.show()
     print("Done")
 
